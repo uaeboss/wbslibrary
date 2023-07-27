@@ -12,8 +12,8 @@ Installed packages:
 dbConnection:
 Verbindung zur Datenbank
 
-bookControllers:
-Auslagerung der Funktionen
+<p>bookControllers:
+Auslagerung der Funktionen</p>
 
 -------------------------------------------------------------------------------------------------------------------
 
