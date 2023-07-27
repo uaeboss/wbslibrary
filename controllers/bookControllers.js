@@ -10,6 +10,25 @@ const getAllBooks = async (req, res) => {
   }
 };
 
+const createBook = async (req, res) => {
+  try {
+    const { title, subtitle, description, image_url, isbn, genre } = req.body;
+    if (!title || !description || !isbn || !genre)
+      return res.status(400).json({ error: 'Missing fields to create a new book!' });
+
+    const {
+      rows: [newBook],
+    } = await dbPool.query(
+      'INSERT INTO books (title, subtitle, description, image_url, isbn, genre) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;',
+      [title, subtitle, description, image_url, isbn, genre]
+    );
+
+    return res.json(newBook);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
 const getOneBook = async (req, res) => {
   try {
     const { id } = req.params;
@@ -22,9 +41,10 @@ const getOneBook = async (req, res) => {
     if (!oneBook) return res.status(404).json({ error: 'Book not found' });
 
     return res.json(oneBook);
+    
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
 };
 
-export { getAllBooks, getOneBook };
+export { getAllBooks, createBook, getOneBook };
