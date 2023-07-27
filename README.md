@@ -1,6 +1,7 @@
 ES6
 -------------------------------------------------------------------------------------------------------------------
 
+
 Installed packages:
 - nodemon
 - express
@@ -16,6 +17,7 @@ Verbindung zur Datenbank</p>
 Auslagerung der Funktionen</p>
 
 -------------------------------------------------------------------------------------------------------------------
+
 
 Aufbau Datenbank:
 
@@ -54,6 +56,7 @@ Aufbau Datenbank:
 
 -------------------------------------------------------------------------------------------------------------------
 
+
 Vorlagen:
 
         INSERT INTO books (title, subtitle, description, image_url, isbn, genre) VALUES ('', '', '', '', '', '')
@@ -61,5 +64,6 @@ Vorlagen:
         INSERT INTO authors (first_name, last_name, about, image_url) VALUES ('', '', '', '')
 
         INSERT INTO genres (genre_name, genre_description) VALUES ('', '')
+        
         
 -------------------------------------------------------------------------------------------------------------------
