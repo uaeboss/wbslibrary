@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllBooks } from './controllers/bookControllers.js';
+import { getAllBooks, createBook } from './controllers/bookControllers.js';
 
 const app = express();
 const port = process.env.PORT || 6969;
@@ -16,7 +16,7 @@ app.route('/').get(async (req, res) => {
       }
 });
 
-app.route('/books').get(getAllBooks)
+app.route('/books').get(getAllBooks).post(createBook);
 
 
 
