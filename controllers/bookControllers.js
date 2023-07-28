@@ -71,4 +71,22 @@ const editBook = async (req, res) => {
   }
 };
 
-export { getAllBooks, createBook, getOneBook, editBook };
+const deactivateBook = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!+id) return res.status(400).json({ error: 'Invalid Id' });
+
+    const {
+      rows: [deactivatedBook],
+    } = await dbPool.query(
+      'UPDATE books SET active=false WHERE id=$1 RETURNING *;',
+      [id]
+    );
+
+    return res.json(deactivatedBook);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+export { getAllBooks, createBook, getOneBook, editBook, deactivateBook };
