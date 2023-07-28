@@ -67,3 +67,25 @@ Vorlagen:
         
         
 -------------------------------------------------------------------------------------------------------------------
+
+Funktionalitäten:
+books:<br>
+[x] get all books
+[x] get one book
+[x] create book
+[x] edit book
+[x] deactivate book
+
+authors:<br>
+[x] get all authors
+[x] get one author
+[x] create author
+[x] edit author
+[x] delete author
+
+genres:
+[ ] get all genres
+[ ] get one genre
+[ ] create genre
+[ ] edit genre
+[ ] delete genre
