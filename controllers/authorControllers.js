@@ -29,4 +29,22 @@ const getAllAuthors = async (req, res) => {
     }
   };
 
-export { getAllAuthors, createAuthor };
+  const getOneAuthor = async (req, res) => {
+    try {
+      const { id } = req.params;
+      if (!+id) return res.status(400).json({ error: 'Invalid Id' });
+  
+      const {
+        rows: [oneAuthor],
+      } = await dbPool.query('SELECT * FROM authors WHERE id=$1', [id]);
+  
+      if (!oneAuthor) return res.status(404).json({ error: 'Book not found' });
+  
+      return res.json(oneAuthor);
+      
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  };
+
+export { getAllAuthors, createAuthor, getOneAuthor };
