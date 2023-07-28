@@ -1,5 +1,5 @@
 import express from 'express';
-
+import cors from 'cors';
 import { getAllBooks, getOneBook, createBook, editBook, deactivateBook } from './controllers/bookControllers.js';
 import { getAllAuthors, createAuthor, getOneAuthor, editAuthor, deleteAuthor } from './controllers/authorControllers.js';
 
@@ -7,7 +7,10 @@ import { getAllAuthors, createAuthor, getOneAuthor, editAuthor, deleteAuthor } f
 const app = express();
 const port = process.env.PORT || 8000;
 
+app.use(cors())
 app.use(express.json());
+app.use(cors({ origin: ['http://localhost:5173',
+'/https:\/\/?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.netlify\.app/'] }));
 
 app.route('/').get(async (req, res) => {
     try {
