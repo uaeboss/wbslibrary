@@ -71,4 +71,20 @@ const getAllAuthors = async (req, res) => {
     }
   };
 
-export { getAllAuthors, createAuthor, getOneAuthor, editAuthor };
+  const deleteAuthor = async (req, res) => {
+    try {
+      const { id } = req.params;
+      if (!+id) return res.status(400).json({ error: 'Invalid Id' });
+  
+      const {
+        rows: [deletedAuthor],
+      } = await dbPool.query('DELETE FROM authors WHERE id=$1 RETURNING *;', [id]);
+  
+  
+      return res.json(deletedAuthor);
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  };
+
+export { getAllAuthors, createAuthor, getOneAuthor, editAuthor, deleteAuthor };
