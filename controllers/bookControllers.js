@@ -32,7 +32,7 @@ const createBook = async (req, res) => {
 const getOneBook = async (req, res) => {
   try {
     const { id } = req.params;
-    if (!+id) return res.status(400).json({ error: 'Invalid Id sent' });
+    if (!+id) return res.status(400).json({ error: 'Invalid Id' });
 
     const {
       rows: [oneBook],
@@ -47,4 +47,28 @@ const getOneBook = async (req, res) => {
   }
 };
 
-export { getAllBooks, createBook, getOneBook };
+const editBook = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!+id) return res.status(400).json({ error: 'Invalid Id' });
+
+    const { title, subtitle, description, image_url, isbn, genre, active } = req.body;
+    if (!title || !description || !isbn || !genre)
+      return res.status(400).json({ error: 'Missing fields to create a new book!' });
+
+    const {
+      rows: [updatedBook],
+    } = await dbPool.query(
+      'UPDATE books SET title=$1, subtitle=$2, description=$3, image_url=$4, isbn=$5, genre=$6, active=$7 WHERE id=$8 RETURNING *;',
+      [title, subtitle, description, image_url, isbn, genre, active, id]
+    );
+
+    if (!updatedBook) return res.status(404).json({ error: 'Book not found' });
+
+    return res.json(updatedBook);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+export { getAllBooks, createBook, getOneBook, editBook };
