@@ -47,4 +47,28 @@ const getAllAuthors = async (req, res) => {
     }
   };
 
-export { getAllAuthors, createAuthor, getOneAuthor };
+  const editAuthor = async (req, res) => {
+    try {
+      const { id } = req.params;
+      if (!+id) return res.status(400).json({ error: 'Invalid Id' });
+  
+      const { first_name, last_name, about, image_url } = req.body;
+      if (!first_name || !last_name)
+        return res.status(400).json({ error: 'Name is required to add a new Author!' });
+  
+      const {
+        rows: [updatedAuthor],
+      } = await dbPool.query(
+        'UPDATE authors SET first_name=$1, last_name=$2, about=$3, image_url=$4 WHERE id=$5 RETURNING *;',
+        [first_name, last_name, about, image_url, id]
+      );
+  
+      if (!updatedAuthor) return res.status(404).json({ error: 'Author not found' });
+  
+      return res.json(updatedAuthor);
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  };
+
+export { getAllAuthors, createAuthor, getOneAuthor, editAuthor };
