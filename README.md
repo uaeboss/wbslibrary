@@ -68,7 +68,7 @@ Vorlagen:
         
 -------------------------------------------------------------------------------------------------------------------
 
-Funktionalitäten:
+Funktionalitäten:<br><br>
 books:<br>
 [x] get all books<br>
 [x] get one book<br>
