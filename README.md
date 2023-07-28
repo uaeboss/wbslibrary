@@ -70,22 +70,22 @@ Vorlagen:
 
 Funktionalitäten:
 books:<br>
-[x] get all books
-[x] get one book
-[x] create book
-[x] edit book
-[x] deactivate book
+[x] get all books<br>
+[x] get one book<br>
+[x] create book<br>
+[x] edit book<br>
+[x] deactivate book<br>
 
 authors:<br>
-[x] get all authors
-[x] get one author
-[x] create author
-[x] edit author
-[x] delete author
+[x] get all authors<br>
+[x] get one author<br>
+[x] create author<br>
+[x] edit author<br>
+[x] delete author<br>
 
-genres:
-[ ] get all genres
-[ ] get one genre
-[ ] create genre
-[ ] edit genre
-[ ] delete genre
+genres:<br>
+[ ] get all genres<br>
+[ ] get one genre<br>
+[ ] create genre<br>
+[ ] edit genre<br>
+[ ] delete genre<br>
