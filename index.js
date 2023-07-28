@@ -1,7 +1,7 @@
 import express from 'express';
 
 import { getAllBooks, getOneBook, createBook, editBook, deactivateBook } from './controllers/bookControllers.js';
-import {} from './controllers/authorControllers.js';
+import { getAllAuthors } from './controllers/authorControllers.js';
 
 
 const app = express();
@@ -22,6 +22,8 @@ app.route('/').get(async (req, res) => {
 app.route('/books').get(getAllBooks).post(createBook);
 
 app.route('/books/:id').get(getOneBook).put(editBook).delete(deactivateBook);
+
+app.route('/authors').get(getAllAuthors);
 
 
 app.listen(port, () => console.log(`Server up on port:http://localhost:${port}/`));
