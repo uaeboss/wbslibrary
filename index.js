@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { getAllBooks, getOneBook, createBook, editBook, deactivateBook } from './controllers/bookControllers.js';
 import { getAllAuthors, createAuthor, getOneAuthor, editAuthor, deleteAuthor } from './controllers/authorControllers.js';
-import { getAllGenres } from './controllers/genreControllers.js';
+import { getAllGenres, createGenre } from './controllers/genreControllers.js';
 
 
 const app = express();
@@ -31,7 +31,7 @@ app.route('/authors').get(getAllAuthors).post(createAuthor);
 
 app.route('/authors/:id').get(getOneAuthor).put(editAuthor).delete(deleteAuthor);
 
-app.route('/genres').get(getAllGenres)
+app.route('/genres').get(getAllGenres).post(createGenre);
 
 
 app.listen(port, () => console.log(`Server up on port:http://localhost:${port}/`));
