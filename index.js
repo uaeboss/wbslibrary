@@ -1,26 +1,9 @@
-import express from "express";
-import cors from "cors";
-import {
-  getAllBooks,
-  getOneBook,
-  createBook,
-  editBook,
-  deactivateBook,
-} from "./controllers/bookControllers.js";
-import {
-  getAllAuthors,
-  createAuthor,
-  getOneAuthor,
-  editAuthor,
-  deleteAuthor,
-} from "./controllers/authorControllers.js";
-import {
-  getAllGenres,
-  createGenre,
-  getOneGenre,
-  editGenre,
-  deleteGenre,
-} from "./controllers/genresControllers.js";
+
+import express from 'express';
+import cors from 'cors';
+import { getAllBooks, getOneBook, createBook, editBook, deactivateBook } from './controllers/bookControllers.js';
+import { getAllAuthors, createAuthor, getOneAuthor, editAuthor, deleteAuthor } from './controllers/authorControllers.js';
+import { getAllGenres, createGenre, getOneGenre, editGenre, deleteGenre } from './controllers/genreControllers.js';
 
 const app = express();
 const port = process.env.PORT || 8000;
