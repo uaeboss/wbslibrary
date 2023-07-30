@@ -38,7 +38,7 @@ const getOneGenre = async (req, res) => {
 
     const {
       rows: [oneGenre],
-    } = await dbPool.query("SELECT * FROM genre WHERE id=$1", [id]);
+    } = await dbPool.query("SELECT * FROM genres WHERE id=$1", [id]);
 
     if (!oneGenre) return res.status(404).json({ error: "Genre not found" });
 
@@ -62,7 +62,7 @@ const editGenre = async (req, res) => {
     const {
       rows: [updatedGenre],
     } = await dbPool.query(
-      "UPDATE authors SET genre_name=$1, genre_description=$2 WHERE id=$3 RETURNING *;",
+      "UPDATE genres SET genre_name=$1, genre_description=$2 WHERE id=$3 RETURNING *;",
       [genre_name, genre_description, id]
     );
 
@@ -82,7 +82,7 @@ const deleteGenre = async (req, res) => {
 
     const {
       rows: [deletedGenre],
-    } = await dbPool.query("DELETE FROM genre WHERE id=$1 RETURNING *;", [id]);
+    } = await dbPool.query("DELETE FROM genres WHERE id=$1 RETURNING *;", [id]);
 
     return res.json(deletedGenre);
   } catch (error) {
