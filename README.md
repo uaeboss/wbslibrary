@@ -1,14 +1,13 @@
-ES6
--------------------------------------------------------------------------------------------------------------------
-
+## ES6
 
 Installed packages:
+
 - nodemon
 - express
 - pg
 - dotenv
 
--------------------------------------------------------------------------------------------------------------------
+---
 
 <p>dbConnection:<br/>
 Verbindung zur Datenbank</p>
@@ -16,8 +15,7 @@ Verbindung zur Datenbank</p>
 <p>bookControllers:<br/>
 Auslagerung der Funktionen</p>
 
--------------------------------------------------------------------------------------------------------------------
-
+---
 
 Aufbau Datenbank:
 
@@ -54,8 +52,7 @@ Aufbau Datenbank:
             genre_description TEXT
         );
 
--------------------------------------------------------------------------------------------------------------------
-
+---
 
 Vorlagen:
 
@@ -64,9 +61,10 @@ Vorlagen:
         INSERT INTO authors (first_name, last_name, about, image_url) VALUES ('', '', '', '')
 
         INSERT INTO genres (genre_name, genre_description) VALUES ('', '')
-        
-        
--------------------------------------------------------------------------------------------------------------------
+
+
+
+---
 
 Funktionalitäten:<br><br>
 books:<br>
@@ -84,8 +82,8 @@ authors:<br>
 [x] delete author<br>
 
 genres:<br>
-[ ] get all genres<br>
-[ ] get one genre<br>
-[ ] create genre<br>
-[ ] edit genre<br>
-[ ] delete genre<br>
+[x] get all genres<br>
+[x] get one genre<br>
+[x] create genre<br>
+[x] edit genre<br>
+[x] delete genre<br>
