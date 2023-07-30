@@ -84,8 +84,8 @@ authors:<br>
 [x] delete author<br>
 
 genres:<br>
-[ ] get all genres<br>
+[x] get all genres<br>
 [ ] get one genre<br>
-[ ] create genre<br>
+[x] create genre<br>
 [ ] edit genre<br>
 [ ] delete genre<br>
