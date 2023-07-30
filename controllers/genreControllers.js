@@ -29,4 +29,22 @@ const getAllGenres = async (req, res) => {
     }
   };
 
-  export { getAllGenres, createGenre };
+  const getOneGenre = async (req, res) => {
+    try {
+      const { id } = req.params;
+      if (!+id) return res.status(400).json({ error: 'Invalid Id' });
+  
+      const {
+        rows: [oneGenre],
+      } = await dbPool.query('SELECT * FROM genres WHERE id=$1', [id]);
+  
+      if (!oneGenre) return res.status(404).json({ error: 'Genre not found' });
+  
+      return res.json(oneGenre);
+      
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  };
+
+  export { getAllGenres, createGenre, getOneGenre };
