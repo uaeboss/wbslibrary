@@ -2,7 +2,11 @@ import dbPool from '../db/dbConnection.js';
 
 const getAllBooks = async (req, res) => {
   try {
-    const { rows } = await dbPool.query('SELECT * FROM books;');
+    const { rows } = await dbPool.query(`SELECT books.*, json_agg(authors) as authors
+    from books
+   JOIN books_authors ON books.id = books_authors.book_id
+   JOIN authors ON books_authors.author_id = authors.id
+   group by books.id;`);
     console.log(rows);
     return res.json(rows);
   } catch (error) {

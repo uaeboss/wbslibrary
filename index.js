@@ -35,16 +35,12 @@ app.route("/books/:id").get(getOneBook).put(editBook).delete(deactivateBook);
 
 app.route("/authors").get(getAllAuthors).post(createAuthor);
 
-app
-  .route("/authors/:id")
-  .get(getOneAuthor)
-  .put(editAuthor)
-  .delete(deleteAuthor);
+app.route("/authors/:id").get(getOneAuthor).put(editAuthor).delete(deleteAuthor);
 
 app.route("/genres").get(getAllGenres).post(createGenre);
 
 app.route("/genres/:id").get(getOneGenre).put(editGenre).delete(deleteGenre);
 
 app.listen(port, () =>
-  console.log(`Server up on port:http://localhost:${port}/`)
+  console.log(`Server up on port: http://localhost:${port}/`)
 );
